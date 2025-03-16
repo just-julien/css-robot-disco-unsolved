@@ -5,37 +5,338 @@ body {
 /* 👇👇👇 Paste the styles of your Fancy Robot from the "Position it right" assignment here 👇👇👇 */
 
 .robot-container {
+  margin: 200px auto;
 }
 
 .robot-face-shape {
+  width: 800px;
+  height: 500px;
+  border: 5px solid black;
+  border-radius: 44% 44% 40% 40%;
+  background: radial-gradient(ellipse at top, #7c2525, transparent),
+    radial-gradient(ellipse at bottom, #ff8001, transparent);
+  margin: 0 auto;
+  position: relative;
+}
+
+.robot-eye-left,
+.robot-eye-right {
+  width: 7.5rem;
+  height: 2.5rem;
+  border: 10px solid black;
+  border-radius: 50%;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
 }
 
 .robot-eye-left {
+  margin: 135px 0 0 200px;
+  background-color: #f8e7b9;
+  animation: robot-eye-left 3s infinite ease-in-out;
+}
+
+@keyframes robot-eye-left {
+  0% {
+    background-color: #f8e7b9;
+  }
+  50% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: #f8e7b9;
+  }
 }
 
 .robot-eye-right {
+  margin: -50px 0 0 475px;
+  background-color: #f8e7b9;
+  transform: rotate(180deg);
+  animation: robot-eye-right 6s linear infinite,
+    robot-eye-right-glow 4s infinite alternate ease-in-out;
+  box-shadow: 0 0 15px #f4d27a;
+}
+
+@keyframes robot-eye-right {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes robot-eye-right-glow {
+  0% {
+    background-color: #f8e7b9;
+    box-shadow: 0 0 10px #f4d27a;
+  }
+  25% {
+    background-color: #f4d27a;
+    box-shadow: 0 0 20px #eac36e;
+  }
+  50% {
+    background-color: #eac36e;
+    box-shadow: 0 0 30px #d9a85c;
+  }
+  75% {
+    background-color: #d9a85c;
+    box-shadow: 0 0 20px #f4d27a;
+  }
+  100% {
+    background-color: #f8e7b9;
+    box-shadow: 0 0 10px #f4d27a;
+  }
+}
+
+.robot-ear-left,
+.robot-ear-right {
+  height: 200px;
+  position: absolute;
+  aspect-ratio: 0.56;
+  top: 50%;
+  clip-path: polygon(
+    100% 0,
+    23% 46%,
+    46% 44%,
+    15% 69%,
+    38% 67%,
+    0 100%,
+    76% 57%,
+    53% 58%,
+    88% 33%,
+    60% 37%
+  );
+  background: #ff8001;
 }
 
 .robot-ear-left {
+  top: 200px;
+  left: 420px;
+  animation: robot-ear-left 3s infinite ease-in-out,
+    robot-ear-left-color 6s infinite linear;
+}
+
+@keyframes robot-ear-left {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes robot-ear-left-color {
+  0% {
+    background-color: #ffeb3b;
+  }
+  50% {
+    background-color: #ff5733;
+  }
+  100% {
+    background-color: #f4a300;
+  }
 }
 
 .robot-ear-right {
+  top: 200px;
+  right: 420px;
+  transform: scaleX(-1);
+  animation: robot-ear-right 0.2s infinite step-start,
+    lightningColor 1.5s infinite linear;
+}
+
+@keyframes robot-ear-right {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes robot-ear-right-color {
+  0%,
+  100% {
+    background-color: #ffeb3b;
+  }
+  33% {
+    background-color: #ffffff;
+  }
+  66% {
+    background-color: #00e5ff;
+  }
 }
 
 .robot-nose {
+  height: 60px;
+  width: 60px;
+  background-image: url(https://fastly.picsum.photos/id/40/4106/2806.jpg?hmac=MY3ra98ut044LaWPEKwZowgydHZ_rZZUuOHrc3mL5mI);
+  background-size: cover;
+  background-position: center;
+  margin: 60px 370px 0;
+  opacity: 0.5;
+  position: relative;
+  animation: robot-nose 3s infinite ease-in-out;
 }
 
-.robot-nose:before {
+@keyframes robot-nose {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(5px);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  30% {
+    transform: translateX(5px);
+  }
+  40% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  70% {
+    transform: translateX(5px);
+  }
+  80% {
+    transform: translateX(-5px);
+  }
+  90% {
+    transform: translateX(0);
+  }
 }
 
-.robot-nose:after {
+.robot-nostril-left,
+.robot-nostril-right {
+  width: 0.625rem;
+  height: 0.938rem;
+  background: #000;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+}
+
+.robot-nostril-left {
+  left: 10px;
+  animation: robot-nostril-left 2s infinite ease-in-out;
+}
+
+@keyframes robot-nostril-left {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.3);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.robot-nostril-right {
+  right: 10px;
+  transform: rotate(90deg);
+  animation: robot-nostril-right 6s infinite linear;
+  transform-origin: center center;
+}
+
+@keyframes robot-nostril-right {
+  0% {
+    transform: rotate(0deg) translateX(7px) rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg) translateX(7px) rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg) translateX(7px) rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg) translateX(7px) rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(7px) rotate(360deg);
+  }
 }
 
 .robot-teeth {
+  height: 72px;
+  width: 333px;
+  display: grid;
+  border: 5px solid black;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin: 80px auto 0;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: center;
+  align-items: center;
 }
 
 .robot-tooth {
+  height: 100%;
+  width: 100%;
+  background-color: #fff8e1;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.robot-tooth:hover {
+  background-color: black;
 }
 
 .robot-hair-style {
+  position: relative;
+  animation: robot-hair-style 2s infinite linear,
+    robot-hair-style 1s infinite alternate;
+}
+
+@keyframes robot-hair-style {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5) translateY(140px);
+  }
+}
+
+.robot-hair-one {
+  position: absolute;
+  border: 4px solid black;
+  width: 25px;
+  height: 25px;
+  background: red;
+  border-radius: 50%;
+  left: 50%;
+  top: -590px;
+  transform: translateX(-42%);
+  box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.6);
+}
+
+.robot-hair-two {
+  width: 5px;
+  height: 52px;
+  position: absolute;
+  background: black;
+  top: -560px;
+  left: 50%;
 }
